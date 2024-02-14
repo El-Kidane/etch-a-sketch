@@ -1,22 +1,65 @@
 /* styles.css */
+* {
+    box-sizing: border-box
+}
 
-body,
-#container {
+body {
+    background-color: darkgrey;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
     margin: 0 auto;
 }
 
+#header,
 #container {
-    width: 960px;
+    margin: 10px auto;
+}
+
+#container,
+#header {
+    width: 800px;
+}
+
+#container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
+    justify-content: space-around;
+    gap: 0px;
+    height: 800px;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+#header {
+    background-color: #222;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+#header > span {
+    color: darkgray;
+    font-size: larger;
+    padding: 10px;
+}
+
+#header-btn {
+    background: #222;
+    border: 3px solid orangered;
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: orangered;
+    font-size: larger;
+    text-transform: uppercase;
 }
 
 .grid-cell {
-    border: thin solid lightgray;
-    height: 50px;
-    width: 50px;
+    border: thin solid rgb(145, 145, 145);
+    height: auto;
+    width: auto;
 }
 
 .grid-cell:hover {
