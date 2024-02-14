@@ -4,8 +4,7 @@ const body = document.querySelector('body');
 let gridRow;
 
 function createHeader() {
-    let
-        header,
+    let header,
         headerTxt,
         headerBtn,
         headerFragment = document.createDocumentFragment();
@@ -22,8 +21,9 @@ function createHeader() {
     headerBtn.addEventListener('click', createNewGrid);
 
     headerFragment.appendChild(header);
-    header.appendChild(headerTxt);
     header.appendChild(headerBtn);
+    header.appendChild(headerTxt);
+
     body.insertBefore(headerFragment, container);
 }
 
@@ -34,11 +34,9 @@ function createGrid(gridRow) {
         cellWidth = 'width',
         cellHeight = 'height',
         cellFragment = document.createDocumentFragment();
-    console.log(gridCellSize);
-    // grid rows/cols
+    // generates grid's rows/cols
     for (let i = 0; i < gridRow; ++i) {
         for (let j = 0; j < gridCol; ++j) {
-
             gridCell = document.createElement('div');
             gridCell.className = 'grid-cell';
             gridCell.style[cellHeight] = `${gridCellSize}px`;
@@ -46,17 +44,19 @@ function createGrid(gridRow) {
             cellFragment.appendChild(gridCell);
         }
     }
-    console.log(gridCellSize);
-    //append all cells div to DOM only once, no reflow
     container.appendChild(cellFragment);
 };
 
 function createNewGrid() {
-    gridRow = +prompt('New grid size?', 'Enter the number. 13 would return a grid of 13x13 squares');
-    document.querySelector('#container').innerHTML = "";
-    createGrid(gridRow);
+    gridRow = +prompt('New grid size?', 'Enter a new size, up to 100.');
+    if (gridRow <= 0 || gridRow > 100) {
+        alert('ERROR 100 max, no negative numbers.')
+    }
+    else {
+        document.querySelector('#container').innerHTML = "";
+        createGrid(gridRow);
+    }
 }
 
 window.onload = createHeader();
 window.onload = createGrid(16);
-
